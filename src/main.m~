@@ -1,0 +1,21 @@
+% main program
+dbg = true;
+
+db = '../db/';
+fnm = strcat(db, 'aluminyum.txt');
+
+data = csvread(fnm);
+X = data(:,1);
+Y = data(:,2);
+
+if dbg
+    figure(1);  plot(X, Y);
+end
+
+fd = fftshift(fft(Y));
+fd = log(abs(fd));
+fd2 = fftshift(fft(fd));
+fd2 = log(abs(fd2))
+if dbg
+    figure(2);  plot();
+end
